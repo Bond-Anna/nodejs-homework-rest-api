@@ -1,17 +1,15 @@
 const { NotFound } = require('http-errors');
 
-const contactSchema = require('../../middlewares/validation/contactValidation');
-
-const operations = require('../../model');
+const { operations } = require('../../model');
 
 const update = async (req, res) => {
-  const { id } = req.params;
-  const contact = await operations.updateByName(id, req.body);
+  const { contactId } = req.params;
+  const contact = await operations.updateById(contactId, req.body);
   if (!contact) {
-    throw new NotFound(`Product with id=${id} is not found`);
+    throw new NotFound(`Product with id=${contactId} is not found`);
   }
   res.json({
-    status: 'succes',
+    status: 'success',
     code: 200,
     data: {
       result: contact,

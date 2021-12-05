@@ -5,7 +5,6 @@ const { contactSchema } = require('../../schemas');
 const { contacts: ctrl } = require('../../controllers');
 
 const router = express.Router();
-// console.log(router);
 
 const validateMiddleware = validation(contactSchema);
 

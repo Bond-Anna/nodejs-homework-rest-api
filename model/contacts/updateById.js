@@ -3,9 +3,9 @@ const { v4 } = require('uuid');
 const listContacts = require('./listContacts');
 const updatedContacts = require('./updateContacts');
 
-const updateByName = async (name, email, phone) => {
+const updateById = async (contactId, name, email, phone) => {
   const allContacts = await listContacts();
-  const idx = allContacts.findIndex(cont => cont.name === name);
+  const idx = allContacts.findIndex(cont => cont.id === contactId);
   if (idx === -1) {
     return null;
   }
@@ -14,4 +14,4 @@ const updateByName = async (name, email, phone) => {
   return allContacts[idx];
 };
 
-module.exports = updateByName;
+module.exports = updateById;
